@@ -45,3 +45,14 @@ module "api1" {
     google_artifact_registry_repository.yasitha_docker_registry_repo
   ]
 }
+
+module "api2" {
+  source        = "./modules/api"
+  name          = "yasitha-tf-super"
+  region        = var.region
+  port          = var.port
+  registry_name = google_artifact_registry_repository.yasitha_docker_registry_repo.repository_id
+  depends_on = [
+    google_artifact_registry_repository.yasitha_docker_registry_repo
+  ]
+}

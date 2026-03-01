@@ -16,7 +16,7 @@ terraform {
 resource "docker_image" "yasitha-demo-docker-image" {
   name = local.docker_image_url
   build {
-    context = "../src/"
+    context = abspath("${path.root}/../src/")
     tag     = ["yasitha-tf:latest"]
   }
 }
