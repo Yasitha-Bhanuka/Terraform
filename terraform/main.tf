@@ -18,7 +18,7 @@ provider "google" {
   zone    = "asia-southeast1-a"
 }
 
-data "google_client_config" "current" {
+data "google_client_config" "default" {
 }
 
 provider "docker" {
