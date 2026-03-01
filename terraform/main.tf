@@ -13,9 +13,9 @@ terraform {
 }
 
 provider "google" {
-  project = "yasitha-docker-demo"
-  region  = "asia-southeast1"
-  zone    = "asia-southeast1-a"
+  project = var.project_id
+  region  = var.region
+  zone    = var.zone
 }
 
 data "google_client_config" "default" {
@@ -23,7 +23,7 @@ data "google_client_config" "default" {
 
 provider "docker" {
   registry_auth {
-    address  = "asia-southeast1-docker.pkg.dev"
+    address  = "${var.region}-docker.pkg.dev"
     username = "oauth2accesstoken"
     password = data.google_client_config.default.access_token
   }

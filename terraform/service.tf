@@ -1,5 +1,5 @@
 resource "docker_image" "yasitha-demo-docker-image" {
-  name = "asia-southeast1-docker.pkg.dev/yasitha-docker-demo/${google_artifact_registry_repository.yasitha_docker_registry_repo.repository_id}/hexcoder-tf"
+  name = "${var.region}-docker.pkg.dev/${var.project_id}/${google_artifact_registry_repository.yasitha_docker_registry_repo.repository_id}/${var.docker_image_name}"
   build {
     context = "../src/"
     tag     = ["yasitha-tf:latest"]
@@ -7,7 +7,7 @@ resource "docker_image" "yasitha-demo-docker-image" {
 }
 
 resource "google_artifact_registry_repository" "yasitha_docker_registry_repo" {
-  location = "asia-southeast1"
+  location = var.region
 
   repository_id = "yasitha-docker-registry-repo"
   format        = "DOCKER"
@@ -23,7 +23,7 @@ resource "docker_registry_image" "yasitha_registry_image" {
 
 resource "google_cloud_run_service" "yasitha_service" {
   name     = "yasitha-service"
-  location = "asia-southeast1"
+  location = var.region
 
   template {
     spec {
