@@ -7,3 +7,9 @@ resource "google_storage_bucket" "demo-bucket" {
     retention_duration_seconds = 0
   }
 }
+
+resource "google_storage_bucket_object" "demo-object" {
+  name    = "demo-object"
+  bucket  = google_storage_bucket.demo-bucket.name
+  content = module.api1.url
+}

@@ -48,7 +48,7 @@ module "api1" {
 
 module "api2" {
   source        = "./modules/api"
-  name          = "yasitha-tf-super"
+  name          = "yasitha-tf-super-2"
   region        = var.region
   port          = var.port
   registry_name = google_artifact_registry_repository.yasitha_docker_registry_repo.repository_id
