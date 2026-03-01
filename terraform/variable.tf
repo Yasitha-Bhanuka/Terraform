@@ -4,17 +4,6 @@ variable "region" {
   default     = "asia-southeast1"
 }
 
-
-variable "registry_name" {
-  type        = string
-  description = "The registry name of the artifact registry"
-}
-
-variable "name" {
-  type        = string
-  description = "The name of the Cloud Run service"
-}
-
 variable "port" {
   type        = number
   description = "The port of exposed by the Cloud Run service"
