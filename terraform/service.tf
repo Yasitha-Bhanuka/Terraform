@@ -21,4 +21,19 @@ resource "docker_registry_image" "yasitha_registry_image" {
   ]
 }
 
+resource "google_cloud_run_service" "yasitha_service" {
+  name     = "yasitha-service"
+  location = "asia-southeast1"
 
+  template {
+    spec {
+      containers {
+        image = docker_registry_image.yasitha_registry_image.name
+      }
+    }
+  }
+
+  depends_on = [
+    docker_registry_image.yasitha_registry_image
+  ]
+}
