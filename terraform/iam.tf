@@ -1,16 +1,17 @@
-data "google_iam_policy" "noauth" {
-  binding {
-    role = "roles/run.invoker"
-    members = [
-      "allUsers",
-    ]
-  }
-}
+# data "google_iam_policy" "noauth" {
+#   binding {
+#     role = "roles/run.invoker"
+#     members = [
+#       "allUsers",
+#     ]
+#   }
+# }
 
-resource "google_cloud_run_service_iam_policy" "noauth" {
-  location = google_cloud_run_service.yasitha_service.location
-  project  = google_cloud_run_service.yasitha_service.project
-  service  = google_cloud_run_service.yasitha_service.name
+# resource "google_cloud_run_service_iam_policy" "noauth" {
+#   location = google_cloud_run_service.yasitha_service.location
+#   project  = google_cloud_run_service.yasitha_service.project
+#   service  = google_cloud_run_service.yasitha_service.name
 
-  policy_data = data.google_iam_policy.noauth.policy_data
-}
+#   policy_data = data.google_iam_policy.noauth.policy_data
+# }
+
